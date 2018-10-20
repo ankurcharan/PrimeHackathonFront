@@ -1,8 +1,10 @@
+$('#gLogout').hide();
+
 function onSignIn(googleUser) {
 
 	var profile = googleUser.getBasicProfile();
 	// console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	// console.log('Name: ' + profile.getName());
+	let userName = profile.getName();
 	// console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
@@ -28,8 +30,22 @@ function onSignIn(googleUser) {
 					if(result.onBoard === false) {
 
 						// redirect to onBoard page
-						window.location.href = "../onboard.html"
 
+						let token = result["data"]["token"];
+						localStorage.setItem('token', JSON.stringify(token));
+
+						window.location.href = "./onboard.html"
+					}
+					else {
+						
+						// jwt.decode(token);
+						$('#username').val("userName");
+
+						let token = result["data"]["token"];
+						localStorage.setItem('token', JSON.stringify(token));
+
+						$('#gLogin').hide();
+						$('#gLogout').show();
 					}
 				}
 			}
@@ -49,3 +65,5 @@ function signOut() {
 		console.log('User signed out.');
 	});
 }
+
+

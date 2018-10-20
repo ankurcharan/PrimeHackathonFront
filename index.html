@@ -16,10 +16,6 @@
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-    <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
@@ -67,14 +63,16 @@
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">This can help juniors in connecting seniors from same field</p>
-            <a id="gLogin" class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Login with google</a>
-
             
-            <div class="btn btn-primary btn-xl js-scroll-trigger g-signin2" data-onsuccess="onSignIn"></div>
+            <div id="gLogin" class="btn js-scroll-trigger g-signin2" data-onsuccess="onSignIn"></div>
 
+            <br>
 
+            <div id="userData">
+                <p id="username"></p>
+            </div>
 
-            <a href="#" onclick="signOut();">Sign out</a>
+            <a id="gLogout" href="#" onclick="signOut();">Sign out</a>
 
           </div>
         </div>
