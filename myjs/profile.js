@@ -72,7 +72,7 @@ $("#getBlogs").click(function () {
     $("#techStack").hide();
 
     $.ajax({
-        url: "https://us-central1-primehackathon.cloudfunctions.net/api/user/",
+        url: "https://us-central1-primehackathon.cloudfunctions.net/api/user/blogs",
         type: "GET",
         beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', token);
@@ -81,16 +81,17 @@ $("#getBlogs").click(function () {
             if(status==="success") {
                 console.log(result);
                 let str = "<ul> ";
-                let data = result["data"]["techStack"];
-                // console.log(data);
+                let data = result["data"]["blogs"];
+                // // console.log(data);
                 for(let stack in data)
                 {   
-                    // console.log(data[stack]);
-                    str+= "<li> "+data[stack]["techName"]+" : "+data[stack]["level"]+" </li>";
+                //     // console.log(data[stack]);
+                let idName = "blog"+stack;
+                    str+= "<li class='blogTitle' id="+idName+"> "+data[stack]["title"]+"<div id="+idName+" ><p> + "+data[stack]["text"]+" </p></div></li>";
                 }
                 str+="</ul>";
                 console.log(str);
-                $("#techStack").html(str);
+                $("#myBlogs").html(str);
 
             }
         },
